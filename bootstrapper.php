@@ -14,6 +14,7 @@ $phpOk = (function_exists('version_compare') && version_compare(phpversion(), '5
 $jsonOk = (extension_loaded('json') && function_exists('json_encode') && function_exists('json_decode'));
 $splOk = extension_loaded('spl');
 $curlOk = function_exists('curl_version');
+$mysqlIOk = extension_loaded('mysqli');
 if($curlOk)
 {
 	$curlVersion = curl_version();
@@ -38,6 +39,7 @@ echo 'JSON                  -> required  -> '.($jsonOk ? '[ Yes ]' : '[ No  ]').
 echo 'cURL with SSL         -> required  -> '.($curlOk ? ($curlSslOk ? '[ Yes ] '.$curlVersion['version'].' (with '.$curlVersion['ssl_version'].')' : '[ No  ] '.$curlVersion['version'].' (without SSL)') : '[ No  ]').PHP_EOL;
 echo 'MySQL                 -> optional  -> '.($mysqlOk ? '[ Yes ]' : '[ No  ]').PHP_EOL;
 echo 'SQLite3               -> optional  -> '.($sqliteOk ? '[ Yes ]' : '[ No  ]').PHP_EOL;
+echo 'MySQLi                -> optional  -> '.($mysqlIOk ? '[ Yes ]' : '[ No  ]').PHP_EOL;
 echo '-----------------------------------------------------'.PHP_EOL;
 
 
